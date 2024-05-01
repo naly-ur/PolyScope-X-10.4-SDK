@@ -1,0 +1,20 @@
+{
+  "applicationNodes": [
+    {
+      "translationPath": "assets/i18n/",
+      "behaviorURI": "gripdistance-application.worker.js",
+      "presenterURI": "main.js",
+      "componentTagName": "ur-sample-gripdistance-application"
+    }
+  ],
+  "programNodes": [
+    {
+      "excludeFromToolbox": false,
+      "translationPath": "assets/i18n/",
+      "iconURI": "assets/icons/gripdistance.svg",
+      "behaviorURI": "gripdistance-program.worker.js",
+      "presenterURI": "main.js",
+      "componentTagName": "ur-sample-gripdistance-program"
+    }
+  ]
+}

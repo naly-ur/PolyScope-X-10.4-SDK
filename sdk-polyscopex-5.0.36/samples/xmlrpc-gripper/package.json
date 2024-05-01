@@ -1,0 +1,34 @@
+{
+  "name": "xmlrpc-gripper",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "cd xmlrpc-gripper-web && npm run start",
+    "install-frontend": "cd xmlrpc-gripper-web && npm install",
+    "install-backend": "cd xmlrpc-gripper-backend && npm install",
+    "lint": "cd xmlrpc-gripper-web && npm run lint",
+    "postinstall": "npm run install-frontend && npm run install-backend",
+    "prebuild": "npm run clean-dist && npm run clean-target",
+    "build-arm": "export ARCH=linux/arm64 && npm run build",
+    "build": "npm run build-backend && npm run build-frontend",
+    "postbuild": "npm run package",
+    "build-backend": "npm run build --prefix xmlrpc-gripper-backend",
+    "build-frontend": "npm run build --prefix xmlrpc-gripper-web",
+    "prepackage": "mkdir dist && npm run copy-backend && npm run copy-frontend && npm run copy-manifest && npm run copy-license && npm run write-requirements",
+    "package": "package-urcap dist target",
+    "copy-backend": "cpy \"xmlrpc-gripper-backend/target/*\" dist/xmlrpc-gripper-backend",
+    "copy-frontend": "cpy \"**/*\" ../../dist/xmlrpc-gripper-web --parents --cwd=xmlrpc-gripper-web/target",
+    "copy-manifest": "cpy manifest.yaml dist",
+    "write-requirements": "write-ur-packages ./xmlrpc-gripper-web/package.json dist/requirements.txt",
+    "copy-license": "cpy LICENSE dist",
+    "clean-dist": "rimraf dist",
+    "clean-target": "rimraf target",
+    "install-urcap": "install-urcap 'target/xmlrpc-gripper*.urcapx'",
+    "delete-urcap": "delete-urcap universal-robots xmlrpc-gripper"
+  },
+  "private": true,
+  "devDependencies": {
+    "@universal-robots/urcap-utils": "1.0.5",
+    "cpy-cli": "3.1.1",
+    "rimraf": "3.0.2"
+  }
+}

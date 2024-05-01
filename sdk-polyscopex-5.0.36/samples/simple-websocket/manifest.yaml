@@ -1,0 +1,22 @@
+metadata:
+  vendorID: universal-robots
+  urcapID: simple-websocket
+  version: 1.0.0
+  vendorName: Universal Robots A/S
+  urcapName: Simple WebSocket
+  contactInfo: Energivej 25, 5260 Odense S, Denmark
+  description: Simple WebSocket URCap
+  copyright: Copyright (c) 2009-2023 Universal Robots. All rights reserved.
+  licenseType: Sample license
+artifacts:
+  webArchives:
+  - id: simple-websocket-frontend
+    folder: simple-websocket-frontend
+  containers:
+  - id: simple-websocket-backend
+    image: simple-websocket-backend:latest
+    ingress:
+    - id: websocket-api
+      containerPort: 52762
+      protocol: websocket
+      proxyUrl: /

@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<project
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.ur.rtde.client</groupId>
+  <artifactId>rtde</artifactId>
+  <version>2.7.2</version>
+  <packaging>pom</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <ur.artifactidpostfix></ur.artifactidpostfix>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>2.7</version>
+        <executions>
+          <execution>
+            <id>copy python files for release (goes to customers!)</id>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <phase>generate-sources</phase>
+            <configuration>
+              <overwrite>true</overwrite>
+              <outputDirectory>/home/jenkins07/workspace/mod_web-sdk/v5.0_toll-gate_mod_web-sdk/web-sdk-external/target/release</outputDirectory>
+              <resources>
+                <resource>
+                  <directory>/home/jenkins07/workspace/mod_web-sdk/v5.0_toll-gate_mod_web-sdk/web-sdk-external</directory>
+                  <includes>
+                    <include>rtde/**</include>
+                  </includes>
+                </resource>
+                <resource>
+                  <directory>/home/jenkins07/workspace/mod_web-sdk/v5.0_toll-gate_mod_web-sdk/web-sdk-external</directory>
+                  <includes>
+                    <include>examples/**</include>
+                    <include>README.md</include>
+                    <include>LICENSE</include>
+                    <include>setup.py</include>
+                    <include>setup.cfg</include>
+                  </includes>
+                  <excludes>
+                    <exclude>**/*pyc</exclude>
+                  </excludes>
+                </resource>
+              </resources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <!-- this creates your *.tar.gz -->
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>Create production / release zip</id>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <configuration>
+              <appendAssemblyId>true</appendAssemblyId>
+              <descriptors>
+                <descriptor>assembly-release.xml</descriptor>
+              </descriptors>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -1,0 +1,23 @@
+{
+  "name": "run-simulator",
+  "version": "0.0.1",
+  "description": "Runs the PolyScope X Simulator",
+  "main": "run-simulator.js",
+  "bin": "run-simulator.js",
+  "scripts": {
+    "prebuild-local": "npm install --silent --force",
+    "build-local": "pkg --target host run-simulator.js --out-path ../../"
+  },
+  "author": "Universal Robots A/S",
+  "devDependencies": {
+    "pkg": "^5.4.1"
+  },
+  "dependencies": {
+    "commander": "^8.3.0",
+    "fs-extra": "^10.0.0",
+    "jszip": "^3.10.1",
+    "process": "^0.11.10",
+    "properties-reader": "^2.3.0",
+    "readline-sync": "^1.4.10"
+  }
+}

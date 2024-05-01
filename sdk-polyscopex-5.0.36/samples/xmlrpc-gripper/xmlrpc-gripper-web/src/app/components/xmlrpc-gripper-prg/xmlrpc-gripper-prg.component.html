@@ -1,0 +1,90 @@
+<div *ngIf="contributedNode && robotSettings" class="inline-component">
+  <ur-dropdown
+    [label]="'presenter.xmlrpc-gripper.label.grip-or-release' | translate"
+    [options]="[{
+          label: 'presenter.xmlrpc-gripper.label.grip' | translate,
+          value: GripperAction[GripperAction.grip]
+        },
+        {
+          label: 'presenter.xmlrpc-gripper.label.release' | translate,
+          value: GripperAction[GripperAction.release]
+        }]"
+    [selectedOption]="contributedNode.parameters.action"
+    (selectionChange)="changeAction($event.value)"
+    bindValue="value"
+  ></ur-dropdown>
+  <ur-button
+    *ngIf="contributedNode.parameters.action === GripperAction.grip"
+    class="button"
+    [attr.data-testid]="'xmlrpc-gripper_grip_btn'"
+    type="cta"
+    (handleClick)="onGripRelease('grip')"
+    [disabled]="gripperIsBusy()"
+  >
+    {{ 'presenter.xmlrpc-gripper.label.grip' | translate }}
+  </ur-button>
+  <ur-button
+    *ngIf="contributedNode.parameters.action === GripperAction.release"
+    class="button"
+    [attr.data-testid]="'xmlrpc-gripper_release_btn'"
+    type="cta"
+    (handleClick)="onGripRelease('release')"
+    [disabled]="gripperIsBusy()"
+  >
+    {{ 'presenter.xmlrpc-gripper.label.release' | translate }}
+  </ur-button>
+  <ur-dialog-input
+    (valueChanged)="setWidthValue($event)"
+    [positiveDigitsOnly]="true"
+    [value]="contributedNode.parameters.width?.toString()"
+    [validators]="[widthValueLimits]"
+    [type]="'number'"
+    [label]="'presenter.xmlrpc-gripper.label.width' | translate"
+    unit="mm"
+    precision="1"
+  >
+  </ur-dialog-input>
+  <ur-dialog-input
+    *ngIf="contributedNode.parameters.action === GripperAction.grip"
+    (valueChanged)="setForceValue($event)"
+    [positiveDigitsOnly]="true"
+    [value]="this.contributedNode.parameters.force?.toString()"
+    [validators]="[forceValueLimits]"
+    [type]="'number'"
+    [label]="'presenter.xmlrpc-gripper.label.force' | translate"
+    precision="1"
+    unit="N"
+  >
+  </ur-dialog-input>
+  <ur-checkbox
+    *ngIf="contributedNode.parameters.action === GripperAction.grip"
+    [label]="'presenter.xmlrpc-gripper.label.grip-detected' | translate"
+    [checked]="contributedNode.parameters.isGripDetected"
+    (handleChange)="toggleGripDetection()"
+    data-testid="blocking-checkbox"
+  ></ur-checkbox>
+  <ur-dialog-input
+    *ngIf="contributedNode.parameters.isGripDetected"
+    (valueChanged)="setOnGripDetectedValue($event)"
+    [value]="contributedNode.parameters.onGripDetected"
+    [label]="'presenter.xmlrpc-gripper.label.on-grip-detected' | translate"
+  >
+  </ur-dialog-input>
+  <ur-checkbox
+    *ngIf="contributedNode.parameters.action === GripperAction.grip"
+    [label]="'presenter.xmlrpc-gripper.label.grip-not-detected' | translate"
+    [checked]="contributedNode.parameters.isGripNotDetected"
+    (handleChange)="toggleGripNotDetection()"
+    data-testid="blocking-checkbox"
+  ></ur-checkbox>
+  <ur-dialog-input
+    *ngIf="contributedNode.parameters.isGripNotDetected"
+    (valueChanged)="setOnGripNotDetectedValue($event)"
+    [value]="contributedNode.parameters.onGripNotDetected"
+    [label]="'presenter.xmlrpc-gripper.label.on-grip-not-detected' | translate"
+  >
+  </ur-dialog-input>
+  <div *ngIf="showErrorMessage()">
+    <span class="message-error">{{ 'presenter.xmlrpc-gripper.label.gripper-action-failed' | translate }}</span>
+  </div>
+</div>

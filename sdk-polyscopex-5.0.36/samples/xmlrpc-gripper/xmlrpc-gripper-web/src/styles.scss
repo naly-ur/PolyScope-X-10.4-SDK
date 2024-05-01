@@ -1,0 +1,84 @@
+@use 'designtokens' as tokens;
+
+.inline-component {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  gap: tokens.$spacing-03;
+  ur-title {
+    white-space: nowrap;
+  }
+  ur-input-field {
+    min-width: 180px;
+  }
+  ur-radio-group {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .message-error {
+    color: tokens.$color-red-400;
+    font-family: Archivo, sans-serif;
+    font-size: 0.75rem;
+    line-height: 1rem;
+    white-space: nowrap;
+  }
+}
+.selector {
+  display: flex;
+  padding: tokens.$spacing-02 tokens.$spacing-03;
+  background: tokens.$color-background-interactive-default;
+  border: tokens.$border-form-input;
+  border-radius: tokens.$border-radius-medium;
+  box-sizing: border-box;
+  cursor: pointer;
+  height: tokens.$spacing-10;
+  width: 180px;
+  --label-color: #{tokens.$color-font-secondary};
+  --value-color: #{tokens.$color-font-primary};
+
+  &.warning {
+    --label-color: #{tokens.$color-font-warning};
+    --value-color: #{tokens.$color-font-warning};
+    color: tokens.$color-font-warning;
+    border-color: tokens.$color-state-warning;
+  }
+  &.disabled {
+    background: tokens.$color-background-interactive-disabled;
+    --label-color: #{tokens.$color-font-disabled};
+    --value-color: #{tokens.$color-font-disabled};
+    color: tokens.$color-font-disabled;
+    border-color: tokens.$color-font-disabled;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    .label {
+      height: tokens.$spacing-05;
+      @include tokens.typography(font-label);
+      color: var(--label-color);
+      white-space: nowrap;
+    }
+    .value {
+      @include tokens.typography(font-body-medium);
+      width: 100%;
+      height: tokens.$spacing-05;
+      color: var(--value-color);
+      line-height: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+  .icon {
+    transform: rotate(90deg);
+  }
+}
+
+.component {
+  .section {
+    padding: 1rem 0 0;
+  }
+}
+

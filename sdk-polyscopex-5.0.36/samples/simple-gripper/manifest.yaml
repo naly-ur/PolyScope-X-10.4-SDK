@@ -1,0 +1,22 @@
+metadata:
+  vendorID: universal-robots
+  urcapID: simple-gripper
+  version: 0.0.5
+  vendorName: Universal Robots
+  urcapName: Simple Gripper Contribution
+  contactInfo: Energivej 25, 5260 Odense S, Denmark
+  description: Gripper Sample URCap
+  copyright: Copyright (c) 2009-2022 Universal Robots. All rights reserved.
+  licenseType: Sample license
+artifacts:
+  webArchives:
+  - id: simple-gripper-frontend
+    folder: simple-gripper-frontend
+  containers:
+  - id: simple-gripper-backend
+    image: simple-gripper-backend:latest
+    mounts:
+    - mount: tmpfs:/root/.ros
+      access: rw
+    devices:
+      - type: ttyTool

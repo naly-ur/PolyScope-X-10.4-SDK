@@ -1,0 +1,83 @@
+<div class="more-settings-dialog-header">
+    <ur-icon icon="access"></ur-icon>
+    <ur-heading size="large" type="h1">{{ 'presenter.move-to.label.more_settings' | translate }}</ur-heading>
+</div>
+
+<div class="more-settings-dialog-content ur-row" *ngIf="inputData">
+    <nav>
+        <ur-tabs (linkChanged)="onLinkChanged($event)" [isVertical]="true">
+            <ur-tab
+                [title]="('presenter.move-to.label.speed' | translate) + ':'"
+                [subtitle]="'presenter.move-to.label.custom' | translate"
+                icon="move-speed"
+                link="speed"
+                [class.invalid]="!inputData.fieldValidation.speed || !inputData.fieldValidation.acceleration"
+                [attr.data-testid]="'move-to-speed-tab'"
+            >
+            </ur-tab>
+            <ur-tab
+                [title]="('presenter.move-to.label.reference' | translate) + ':'"
+                [subtitle]="getSelectedFrameName()"
+                icon="move-frame"
+                link="reference"
+                [class.invalid]="!inputData.fieldValidation.frame"
+                [attr.data-testid]="'move-to-reference-tab'"
+            >
+            </ur-tab>
+            <ur-tab
+                [title]="('presenter.move-to.label.transform' | translate) + ':'"
+                [subtitle]="inputData?.transform?.poseVariable?.name ?? ('presenter.move-to.label.none' | translate)"
+                icon="move-transform"
+                link="transform"
+                [class.invalid]="!inputData.fieldValidation.transform"
+                [attr.data-testid]="'move-to-transform-tab'"
+            >
+            </ur-tab>
+            <ur-tab
+                [title]="('presenter.move-to.label.blend' | translate) + ':'"
+                [subtitle]="(inputData.blend.enabled ? 'presenter.move-to.blend.enabled' : 'presenter.move-to.blend.disabled') | translate"
+                icon="move-blend"
+                link="blend"
+                [class.invalid]="!inputData.fieldValidation.blend"
+                [attr.data-testid]="'move-to-blend-tab'"
+            >
+            </ur-tab>
+        </ur-tabs>
+    </nav>
+
+    <hr class="vertical" />
+
+    <ng-container [ngSwitch]="activeTab" *ngIf="inputData">
+        <ur-move-to-speed-settings
+            *ngSwitchCase="'speed'"
+            [variables]="inputData.variables"
+            [moveType]="inputData.moveType"
+            [speedSettings]="inputData.speed | clone"
+            [units]="inputData.robotSettings.units"
+            (speedSettingsChanged)="onSpeedSettingsChanged($event)"
+        ></ur-move-to-speed-settings>
+
+        <ur-move-to-reference-settings
+            *ngSwitchCase="'reference'"
+            [settings]="inputData.reference | clone"
+            [frames]="inputData.frames"
+            (referenceSettingsChanged)="onReferenceSettingsChanged($event)"
+        ></ur-move-to-reference-settings>
+
+        <ur-move-to-transform-settings
+            *ngSwitchCase="'transform'"
+            [transformSettings]="inputData.transform | clone"
+            [variables]="inputData.variables"
+            (transformSettingsChanged)="onTransformSettingsChanged($event)"
+        >
+        </ur-move-to-transform-settings>
+
+        <ur-blend-settings
+            *ngSwitchCase="'blend'"
+            [blendSettings]="inputData.blend | clone"
+            [units]="inputData.robotSettings.units"
+            [variables]="inputData.variables"
+            (blendSettingsChanged)="onBlendSettingsChanged($event)"
+        ></ur-blend-settings>
+    </ng-container>
+</div>

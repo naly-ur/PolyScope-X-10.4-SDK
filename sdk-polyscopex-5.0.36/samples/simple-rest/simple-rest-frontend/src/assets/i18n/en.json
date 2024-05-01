@@ -1,0 +1,10 @@
+{
+  "application": {
+    "nodes": {
+      "ur-simple-rest-application-node": {
+        "title": "Simple Rest Application Node",
+        "supportiveText": "Send requests and get data through a REST API"
+      }
+    }
+  }
+}

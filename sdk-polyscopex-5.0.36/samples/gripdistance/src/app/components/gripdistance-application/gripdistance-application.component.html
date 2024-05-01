@@ -1,0 +1,28 @@
+<div class="component" *ngIf="applicationNode">
+    <section>
+        <ur-dialog-input
+            [precision]="precision"
+            [unit]="unit"
+            [label]="'presenter.gripdistance.label.open_to_distance' | translate"
+            [digitLimit]="digitLimit"
+            [value]="convertValueToCurrentUnit(applicationNode.openDistance).toString()"
+            [validators]="validators"
+            (valueChanged)="saveOpenValue($event)"
+            id="open_distance"
+        >
+        </ur-dialog-input>
+    </section>
+    <section>
+        <ur-dialog-input
+            [precision]="precision"
+            [unit]="unit"
+            [label]="'presenter.gripdistance.label.close_to_distance' | translate"
+            [digitLimit]="digitLimit"
+            [value]="convertValueToCurrentUnit(applicationNode.closedDistance).toString()"
+            [validators]="validators"
+            (valueChanged)="saveCloseValue($event)"
+            id="closed_distance"
+        >
+        </ur-dialog-input>
+    </section>
+</div>

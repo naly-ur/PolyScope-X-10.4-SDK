@@ -1,0 +1,17 @@
+metadata:
+  vendorID: universal-robots
+  urcapID: calibration-info
+  version: 0.0.1
+  vendorName: Universal Robots
+  urcapName: Calibration Sample
+  contactInfo: Energivej 25, 5260 Odense S, Denmark
+  description: A simple container sample showing how to get calibration data from the controller
+  copyright: Copyright (c) 2009-2023 Universal Robots. All rights reserved.
+  licenseType: Sample license
+artifacts:
+  containers:
+  - id: calibration-info
+    image: calibration-info:latest
+    services:
+      - service: urcontrol-primary-read-only
+

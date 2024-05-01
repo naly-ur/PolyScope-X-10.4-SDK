@@ -1,0 +1,29 @@
+{
+  "name": "<%= urcapId %>",
+  "version": "0.0.0",
+  "scripts": {
+    "lint": "node -e \"console.log('Linting not supported in docker')\"",
+    "prebuild": "npm run clean:dist",
+    "build-arm": "export ARCH=linux/arm64 && npm run build",
+    "build": "npm run build-docker-image && npm run save-docker-image",
+    "build-docker-image": "docker build --platform ${ARCH:-linux/amd64} -t <%= urcapId %>:latest .",
+    "save-docker-image": "mkdir dist && cd dist && mkdir <%= urcapId %> && docker save -o <%= urcapId %>/<%= urcapId %>.tar <%= urcapId %>:latest",
+    "postbuild": "npm run package",
+    "prepackage": "npm run clean:target && npm run copy-manifest && npm run copy-license && npm run write-requirements",
+    "package": "package-urcap dist target",
+    "copy-manifest": "copy-file manifest.yaml dist/",
+    "write-requirements": "write-ur-packages ./package.json dist/requirements.txt",
+    "copy-license": "copy-file LICENSE dist/",
+    "clean:dist": "rimraf ./dist",
+    "clean:target": "rimraf ./target",
+    "install-urcap": "install-urcap 'target/<%= urcapId %>*.urcapx'",
+    "delete-urcap": "delete-urcap <%= vendorId %> <%= urcapId %>"
+  },
+  "private": true,
+  "license": "Apache-2.0",
+  "dependencies": {},
+  "devDependencies": {
+    "@universal-robots/urcap-utils": "1.0.5",
+    "rimraf": "3.0.2"
+  }
+}

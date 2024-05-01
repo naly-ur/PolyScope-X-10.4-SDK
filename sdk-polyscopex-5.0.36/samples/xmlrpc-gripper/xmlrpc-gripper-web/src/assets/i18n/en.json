@@ -1,0 +1,39 @@
+{
+  "program": {
+    "tree": {
+      "nodes": {
+        "universal-robots-xmlrpc-gripper-web-xmlrpc-gripper-prg": "XmlRpc Gripper"
+      }
+    }
+  },
+  "application": {
+    "nodes": {
+      "universal-robots-xmlrpc-gripper-web-xmlrpc-gripper-app": {
+        "title": "XmlRpc Gripper",
+        "supportiveText": "Sample showing XmlRpc communication"
+      }
+    }
+  },
+  "presenter": {
+    "xmlrpc-gripper": {
+      "label": {
+        "description": "XmlRpc Gripper sample showing grip, release, is_busy and is_grip_detected methods.",
+        "grip": "Grip",
+        "release": "Release",
+        "grip-or-release": "Grip or Release",
+        "force": "Force",
+        "gripper-action-failed": "Gripper action failed",
+        "force-error": "Force out of range",
+        "width-error": "Width out of range",
+        "width": "Width",
+        "select-variable": "Pick variable",
+        "width-variable": "Width variable",
+        "variable-error": "Variable not valid",
+        "grip-detected": "Grip Detected",
+        "on-grip-detected": "Grip Detected function",
+        "grip-not-detected": "Grip not Detected",
+        "on-grip-not-detected": "Grip Not Detected function"
+      }
+    }
+  }
+}

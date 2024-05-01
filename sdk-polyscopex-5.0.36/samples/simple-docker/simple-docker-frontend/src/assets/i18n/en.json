@@ -1,0 +1,17 @@
+{
+    "application": {
+        "nodes": {
+            "ur-sample-simple-docker-application": {
+                "title": "Simple-docker Application Node",
+                "supportiveText": "Sample showing docker communication"
+            }
+        }
+    },
+    "presenter": {
+        "backend-data-label": "Data Received from Backend Contributions",
+        "fetch-button": "Fetch Data from Backend",
+        "write-button": "Write Data to Backend",
+        "data-field-description": "Shows the data currently saved in the backend contribution",
+        "data-input-description": "Data to send to the backend"
+    }
+}

@@ -1,0 +1,17 @@
+<div *ngIf="contributedNode" class="inline-component">
+    <ur-radio-group
+        [value]="getGripperToggle()"
+        [labelPosition]="'after'"
+        [buttonPosition]="'inline'"
+        (radioChange)="setGripperToggle($event.value)"
+    >
+        <ur-radio-button [value]="'true'">
+            {{ 'presenter.gripdistance.label.open_to_distance' | translate }}
+            {{ getDisplayValue(contributedNode?.parameters?.openDistance) }}
+        </ur-radio-button>
+        <ur-radio-button [value]="'false'">
+            {{ 'presenter.gripdistance.label.close_to_distance' | translate }}
+            {{ getDisplayValue(contributedNode?.parameters?.closedDistance) }}
+        </ur-radio-button>
+    </ur-radio-group>
+</div>

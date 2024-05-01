@@ -1,0 +1,11 @@
+{
+    "applicationNodes": [
+        {
+            "translationPath": "assets/i18n/",
+            "behaviorURI": "simple-xmlrpc-application-node.worker.js",
+            "presenterURI": "main.js",
+            "componentTagName": "ur-simple-xmlrpc-application-node"
+        }
+    ],
+    "programNodes": []
+}

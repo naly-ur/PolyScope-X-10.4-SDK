@@ -1,0 +1,30 @@
+{
+    "program": {
+        "tree": {
+            "nodes": {
+                "ur-simple-gripper-node": "Simple Gripper"
+            }
+        }
+    },
+    "application": {
+        "nodes": {
+            "ur-simple-gripper-application": {
+               "title": "Simple Gripper",
+                "supportiveText": "Sample showing gripper operations"
+            }
+        }
+    },
+    "presenter": {
+        "simple-gripper": {
+            "label": {
+                "close": "Close",
+                "open": "Open",
+                "force": "Force: ",
+                "onsuccess": "OnSuccess: ",
+                "onfailure": "OnFailure: ",
+                "blocking": "Blocking",
+                "app-description": "Configure the gripper with a grip force value."
+            }
+        }
+    }
+}

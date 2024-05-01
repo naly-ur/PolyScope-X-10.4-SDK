@@ -1,0 +1,49 @@
+<div *ngIf="contributedNode?.parameters && sources && robotSettings" class="inline-component">
+    <ur-dropdown
+        [label]="'sources' | translate"
+        [options]="sources"
+        [selectedOption]="contributedNode.parameters.signalOutput?.sourceID"
+        (selectionChange)="setSourceID($event)"
+        data-testid="select-source-dropdown"
+    ></ur-dropdown>
+
+    <hr *ngIf="contributedNode.parameters.signalOutput?.sourceID" class="vertical" />
+
+    <div class="pill-container">
+        <ur-dropdown
+            *ngIf="this.contributedNode.parameters.signalOutput?.sourceID"
+            [label]="'signal' | translate"
+            [options]="signals"
+            [labelFactory]="getSignalLabel"
+            [selectedOption]="contributedNode.parameters?.signalOutput?.signalID"
+            (selectionChange)="setSignalID($event)"
+            bindValue="signalID"
+            bindLabel="signalID"
+            data-testid="select-signal-dropdown"
+        ></ur-dropdown>
+    </div>
+
+    <div class="inline-component" *ngIf="contributedNode.parameters.signalOutput?.signalID">
+        <ur-dropdown
+            *ngIf="getValueTypeForSignal() === SignalValueType.BOOLEAN"
+            [label]="'output' | translate"
+            [options]="digitalValueOptions"
+            [selectedOption]="getValueLabel()"
+            (selectionChange)="setDigitalValue($event)"
+            data-testid="select-digital-value-dropdown"
+        ></ur-dropdown>
+
+        <ur-dialog-input
+            *ngIf="getValueTypeForSignal() === SignalValueType.FLOAT"
+            [value]="contributedNode.parameters.signalOutput.value.value.toString()"
+            [precision]="1"
+            [label]="'output' | translate"
+            [unit]="getAnalogUnit()"
+            [validators]="valueValidators"
+            data-testid="select-analog-value-pill"
+            type="number"
+            (valueChanged)="setAnalogValue($event)"
+        >
+        </ur-dialog-input>
+    </div>
+</div>

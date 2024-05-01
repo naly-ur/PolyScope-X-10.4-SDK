@@ -1,0 +1,17 @@
+{
+<% if (hasProgramNode) { %>  "program": {
+    "tree": {
+      "nodes": {
+        "<%= programTagName %>": "<%= programNodeTitle %>"
+      }
+    }
+  }<% } if (hasProgramNode && hasApplicationNode) { %>,
+<% } if (hasApplicationNode) { %>  "application": {
+  "nodes": {
+    "<%= applicationTagName %>": {
+      "title": "<%= applicationNodeTitle %>",
+      "supportiveText": "<%= applicationNodeTitle %> - Supportive Text"
+    }
+  }
+  }<% } %>
+}

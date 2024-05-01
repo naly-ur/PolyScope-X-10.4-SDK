@@ -1,0 +1,28 @@
+metadata:
+  vendorID: universal-robots
+  urcapID: devices-demo
+  version: 1.0.0
+  vendorName: Universal Robots
+  urcapName: Device
+  contactInfo: Energivej 25, 5260 Odense S, Denmark
+  description: Daemon Sample URCap
+  copyright: Copyright (c) 2009-2023 Universal Robots. All rights reserved.
+  licenseType: Sample license
+artifacts:
+  containers:
+    - id: device
+      image: device:latest
+      startup: auto
+      ingress:
+        - id: rest-api
+          containerPort: 8000
+          protocol: http
+          proxyUrl: /
+      devices:
+        - type: serial
+      mounts:
+        # make /tmp writeable, so that we can store information about which devices were added / removed to the container
+        - mount: tmpfs:/tmp
+          access: rw
+      
+      

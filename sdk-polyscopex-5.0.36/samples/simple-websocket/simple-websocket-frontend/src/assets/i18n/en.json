@@ -1,0 +1,10 @@
+{
+  "application": {
+    "nodes": {
+      "ur-simple-websocket-application-node": {
+        "title": "Simple Websocket Application Node",
+        "supportiveText": "Send and recieve data via WebSockets"
+      }
+    }
+  }
+}

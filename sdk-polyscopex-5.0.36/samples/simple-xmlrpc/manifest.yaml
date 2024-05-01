@@ -1,0 +1,22 @@
+metadata:
+  vendorID: universal-robots
+  urcapID: simple-xmlrpc
+  version: 1.0.0
+  vendorName: Universal Robots A/S
+  urcapName: Simple XML-RPC
+  contactInfo: Energivej 25, 5260 Odense S, Denmark
+  description: Simple XML-RPC URCap
+  copyright: Copyright (c) 2009-2023 Universal Robots. All rights reserved.
+  licenseType: Sample license
+artifacts:
+  webArchives:
+  - id: simple-xmlrpc-frontend
+    folder: simple-xmlrpc-frontend
+  containers:
+  - id: simple-xmlrpc-backend
+    image: simple-xmlrpc-backend:latest
+    ingress:
+      - id: xmlrpc
+        containerPort: 12345
+        protocol: http
+        proxyUrl: /

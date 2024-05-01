@@ -1,0 +1,12 @@
+<ur-heading>{{ 'presenter.move-to.label.transform' | translate }}</ur-heading>
+<ur-heading type="h2" size="small">{{ 'presenter.move-to.advanced_description.transform' | translate }}</ur-heading>
+<ng-container *ngIf="transformSettings">
+    <ur-dropdown
+        [label]="'presenter.move-to.label.pose' | translate"
+        [options]="poseVariableOptions"
+        [selectedOption]="selectedPoseVariableOption ?? noneOption"
+        (selectionChange)="setSelectedTransformVariable($event)"
+        data-testid="select-waypoint-transformVariable"
+        [ngClass]="{ invalid: selectedPoseVariableOption?.invalid }"
+    ></ur-dropdown>
+</ng-container>

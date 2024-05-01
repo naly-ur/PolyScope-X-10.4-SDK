@@ -1,0 +1,29 @@
+{
+  "program": {
+    "tree": {
+      "nodes": {
+        "ur-sample-gripdistance-program": "Toggle Gripper"
+      }
+    }
+  },
+  "application": {
+    "nodes": {
+      "ur-sample-gripdistance-application": {
+          "title": "Grip Distance",
+          "supportiveText": "Sample frontend URCapX"
+      }
+    }
+  },
+  "presenter": {
+    "gripdistance": {
+      "label": {
+        "close_to_distance": "Close Gripper to Distance: ",
+        "open_to_distance": "Open Gripper to Distance: "
+      },
+      "validator": {
+        "exceed_upper_limit": "Value must not exceed upper limit of {{limit}}.",
+        "exceed_lower_limit": "Value must not exceed lower limit of {{limit}}."
+      }
+    }
+  }
+}

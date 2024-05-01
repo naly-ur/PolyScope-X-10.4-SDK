@@ -1,0 +1,22 @@
+{
+  "name": "polyscopex-sdk-devcontainer",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "mounts": [
+    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+  ],
+  "appPort": [
+    "4200:4200",
+    "8080:8080"
+  ],
+  "runArgs": ["--add-host=host.docker.internal:host-gateway"],
+  "postStartCommand": {
+    "configure-docker": "sudo chmod 666 /var/run/docker.sock && find $containerWorkspaceFolder ! -perm /o=w -exec sudo chmod o+rwx {} +"
+  },
+  "containerEnv": {
+    "SHELL": "/bin/bash",
+    "DEV_CONTAINER": "true",
+    "containerWorkspaceFolder": "${containerWorkspaceFolder}"
+  }
+}

@@ -1,0 +1,11 @@
+<div *ngIf="applicationNode" class="component">
+    <div class="section">
+        <ur-button class="button" type="cta" (clicked)="connectToWebsocket()">
+            Connect to Websocket
+        </ur-button>
+        &nbsp;
+        <ur-button class="button" type="cta" (clicked)="sendMessage()">
+            Send Message
+        </ur-button>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+metadata:
+  vendorID: universal-robots
+  urcapID: simple-docker
+  version: 0.0.4
+  vendorName: Universal Robots
+  urcapName: Simple Docker Contribution
+  contactInfo: Energivej 25, 5260 Odense S, Denmark
+  description: Daemon Sample URCap
+  copyright: Copyright (c) 2009-2021 Universal Robots. All rights reserved.
+  licenseType: Sample license
+artifacts:
+  webArchives:
+  - id: simple-docker-frontend
+    folder: simple-docker-frontend
+  containers:
+  - id: simple-docker-backend
+    image: simple-docker-backend:latest
+    ingress:
+    - id: rest-api
+      containerPort: 5000
+      protocol: http
+      proxyUrl: /
+    mounts:
+    - mount: persistent:/mount
+      access: rw

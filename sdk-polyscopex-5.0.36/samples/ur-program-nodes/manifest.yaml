@@ -1,0 +1,14 @@
+metadata:
+  vendorID: universal-robots
+  urcapID: ur-program-nodes
+  version: 1.0.0
+  vendorName: Universal Robots
+  urcapName: UR Program Nodes
+  contactInfo: Energivej 25, 5260 Odense S, Denmark
+  description: Collection of Universal Robots program nodes
+  copyright: Copyright (c) 2009-2023 Universal Robots. All rights reserved.
+  licenseType: Sample license
+artifacts:
+  webArchives:
+  - id: ur-program-nodes
+    folder: ur-program-nodes

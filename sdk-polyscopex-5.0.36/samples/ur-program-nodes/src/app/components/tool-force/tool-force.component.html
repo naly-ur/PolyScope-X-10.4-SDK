@@ -1,0 +1,29 @@
+<div *ngIf="contributedNode?.parameters" class="inline-component pill-container">
+    <div *ngFor="let axis of axes; let last = last" class="axis-container inline-component" [ngClass]="axis">
+        <ur-toggle-switch
+            [toggled]="contributedNode.parameters[axis].model.entity.enabled"
+            [attr.data-testid]="'tool-force-toggle-axis-' + axis"
+            (handleToggle)="toggle(axis)"
+        >
+        </ur-toggle-switch>
+        <ur-tab-input
+            [label]="getLabel(axis)"
+            [tabInputValue]="getToolForce(axis)"
+            [disabled]="!contributedNode.parameters[axis].model.entity.enabled"
+            [unit]="contributedNode.parameters[axis].model.entity.force ? contributedNode.parameters[axis].model.entity.force.unit : 'N'"
+            [validators]="validators"
+            [variables]="variables"
+            [valid]="contributedNode.parameters[axis].isValid"
+            [attr.data-testid]="'tool-force-force-input-field-axis-' + axis"
+            (valueChanged)="setForce(axis, $event)"
+            precision="1"
+            [valueType]="variableType.FLOAT"
+        >
+        </ur-tab-input>
+        <hr class="vertical" *ngIf="!last" />
+    </div>
+    <div class="test" *ngIf="testModeEnabled">
+        <ur-button type="cta" size="mini">{{ 'presenter.tool-force.test' | translate }}</ur-button>
+        <span>{{ 'presenter.tool-force.test-help' | translate }}</span>
+    </div>
+</div>

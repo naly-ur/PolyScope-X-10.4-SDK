@@ -1,0 +1,58 @@
+{
+    "type": "object",
+    "properties": {
+        "idProduct": {
+            "type": "string"
+        },
+        "idVendor": {
+            "type": "string"
+        },
+        "logicalDevices": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "deviceNode": {
+                        "type": "string"
+                    },
+                    "major": {
+                        "type": "number"
+                    },
+                    "minor": {
+                        "type": "number"
+                    }
+                },
+                "required": [
+                    "deviceNode",
+                    "major",
+                    "minor"
+                ]
+            }
+        },
+        "manufacturer": {
+            "type": "string"
+        },
+        "product": {
+            "type": "string"
+        },
+        "serial": {
+            "type": "string"
+        },
+        "urDeviceType": {
+            "type": "string"
+        },
+        "urDeviceAPIVersion": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "idProduct",
+        "idVendor",
+        "logicalDevices",
+        "manufacturer",
+        "product",
+        "serial",
+        "urDeviceType",
+        "urDeviceAPIVersion"
+    ]
+}

@@ -1,0 +1,36 @@
+<ur-heading>{{ 'presenter.move-to.label.speed' | translate }}</ur-heading>
+<ur-heading size="small" type="h2">{{ 'presenter.move-to.advanced_description.speed' | translate }}</ur-heading>
+<ur-dropdown
+    [label]="'presenter.move-to.label.speed' | translate"
+    [disabled]="true"
+    [options]="['Custom']"
+    [selectedOption]="'Custom'"
+></ur-dropdown>
+<div class="input-row">
+    <ur-tab-input
+        [label]="'presenter.move-to.label.speed' | translate"
+        [tabInputValue]="getSpeed()"
+        [unit]="this.speedUnit.symbol"
+        [precision]="this.speedUnit.significantDigits"
+        [positiveDigitsOnly]="true"
+        (valueChanged)="setSpeed($event)"
+        [validators]="[this.validateSpeed]"
+        [variables]="variables"
+        valueType="float"
+        [inputLabel]="getInputLabelText(this.speedUnit.quantity.quantity)"
+        data-testid="speed-variable-tabinput"
+    ></ur-tab-input>
+    <ur-tab-input
+        [label]="'presenter.move-to.label.acceleration' | translate"
+        [tabInputValue]="getAcceleration()"
+        [unit]="this.accelerationUnit.symbol"
+        [precision]="this.accelerationUnit.significantDigits"
+        [positiveDigitsOnly]="true"
+        (valueChanged)="setAcceleration($event)"
+        [validators]="[this.validateAcceleration]"
+        [variables]="variables"
+        valueType="float"
+        [inputLabel]="getInputLabelText(this.accelerationUnit.quantity.quantity)"
+        data-testid="acceleration-variable-tabinput"
+    ></ur-tab-input>
+</div>

@@ -1,0 +1,16 @@
+{
+  "name": "simple-docker-backend",
+  "version": "0.0.0",
+  "scripts": {
+    "lint": "node -e \"console.log('Linting not supported in docker')\"",
+    "prebuild": "rimraf target",
+    "build": "npm run build-docker-image && npm run save-docker-image",
+    "build-docker-image": "docker build --platform ${ARCH:-linux/amd64} -t simple-docker-backend:latest .",
+    "save-docker-image": "mkdir target && docker save -o target/simple-docker-backend.tar simple-docker-backend:latest"
+  },
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "rimraf": "^2.6.1"
+  }
+}

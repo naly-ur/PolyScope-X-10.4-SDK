@@ -1,0 +1,25 @@
+metadata:
+  vendorID: universal-robots
+  urcapID: xmlrpc-gripper
+  version: 1.1.0
+  vendorName: Universal Robots
+  urcapName: XmlRpc Gripper
+  contactInfo: Energivej 25, 5260 Odense S, Denmark
+  description: xmlrpc-gripper Sample URCap
+  copyright: Copyright (c) 2009-2023 Universal Robots. All rights reserved.
+  licenseType: Sample license
+artifacts:
+  containers:
+  - id: xmlrpc-gripper-backend
+    image: xmlrpc-gripper-backend:latest
+    ingress:
+      - id: xmlrpc
+        containerPort: 40405
+        protocol: http
+        proxyUrl: /
+    devices:
+      - type: ttyTool
+    startup: auto
+  webArchives:
+  - id: xmlrpc-gripper-web
+    folder: xmlrpc-gripper-web

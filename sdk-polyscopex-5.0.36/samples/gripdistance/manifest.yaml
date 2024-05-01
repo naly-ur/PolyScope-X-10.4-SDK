@@ -1,0 +1,14 @@
+metadata:
+  vendorID: universal-robots
+  urcapID: gripdistance
+  version: 0.13.0
+  vendorName: Universal Robots
+  urcapName: Grip Distance
+  contactInfo: Energivej 25, 5260 Odense S, Denmark
+  description: A URCap that allows user to set properties for a sample gripper.
+  copyright: Copyright (c) 2009-2023 Universal Robots. All rights reserved.
+  licenseType: Sample license
+artifacts:
+  webArchives:
+  - id: gripdistance
+    folder: gripdistance

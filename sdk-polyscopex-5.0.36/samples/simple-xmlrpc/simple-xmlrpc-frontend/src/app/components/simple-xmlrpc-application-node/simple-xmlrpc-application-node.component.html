@@ -1,0 +1,12 @@
+<div *ngIf="applicationNode" class="component">
+    <div class="section">
+        <p>Press the button twice to see the data sent to the backend, which is subsequently sent back to the
+            frontend</p>
+        <ur-button (handleClick)="getListOfMethods()">Get List of XML-RPC Methods</ur-button>
+        <ur-button (handleClick)="getMethodHelp()">Get Method Help</ur-button>
+        <ur-button (handleClick)="sendString()">Send String</ur-button>
+        <ur-button (handleClick)="sendInteger()">Send Integer</ur-button>
+        <ur-button (handleClick)="sendStruct()">Send Struct</ur-button>
+        <p>{{ response }}</p>
+    </div>
+</div>

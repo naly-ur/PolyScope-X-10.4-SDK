@@ -1,0 +1,26 @@
+<ur-heading>{{ 'presenter.move-to.label.blend' | translate }}</ur-heading>
+<ur-heading size="small">{{ 'presenter.move-to.advanced_description.blend' | translate }}</ur-heading>
+<ur-dropdown
+    [label]="'presenter.move-to.blend.type' | translate"
+    [options]="blendOptions"
+    [selectedOption]="'' + blendSettings.enabled"
+    bindValue="value"
+    (selectionChange)="setBlendEnabled($event.value)"
+    data-testid="blend-type-dropdown"
+>
+</ur-dropdown>
+
+<ur-tab-input
+    *ngIf="blendSettings.enabled"
+    [label]="'presenter.move-to.blend.radius' | translate"
+    [tabInputValue]="getRadius()"
+    [unit]="units.LENGTH.label"
+    [precision]="units.LENGTH.significantDigits"
+    (valueChanged)="setRadius($event)"
+    [inputLabel]="'presenter.move-to.blend.input_help' | translate"
+    [positiveDigitsOnly]="true"
+    [validators]="[blendValidator]"
+    valueType="float"
+    [variables]="variables"
+    data-testid="blendradius-variable-tabinput"
+></ur-tab-input>

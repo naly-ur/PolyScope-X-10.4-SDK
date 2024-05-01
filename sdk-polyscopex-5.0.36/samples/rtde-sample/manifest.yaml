@@ -1,0 +1,19 @@
+metadata:
+  vendorID: universal-robots
+  urcapID: rtde-sample
+  version: 0.0.1
+  vendorName: Universal Robots
+  urcapName: RTDE Sample
+  contactInfo: Energivej 25, 5260 Odense S, Denmark
+  description: A simple container sample showing how to connect to the controller's RTDE interface
+  copyright: Copyright (c) 2009-2023 Universal Robots. All rights reserved.
+  licenseType: Sample license
+artifacts:
+  containers:
+  - id: rtde-sample
+    image: rtde-sample:latest
+    services:
+      - service: urcontrol-rtde
+    mounts:
+    - mount: persistent:/app/RTDE_Python_Client_Library/examples/robot_data
+      access: rw

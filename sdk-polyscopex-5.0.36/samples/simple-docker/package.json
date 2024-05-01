@@ -1,0 +1,34 @@
+{
+  "name": "simple-docker",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "cd simple-docker-frontend && npm run start",
+    "install-frontend": "cd simple-docker-frontend && npm install",
+    "install-backend": "cd simple-docker-backend && npm install",
+    "lint": "cd simple-docker-frontend && npm run lint",
+    "postinstall": "npm run install-frontend && npm run install-backend",
+    "prebuild": "npm run clean-dist && npm run clean-target",
+    "build-arm": "export ARCH=linux/arm64 && npm run build",
+    "build": "npm run build-backend && npm run build-frontend",
+    "postbuild": "npm run package",
+    "build-backend": "npm run build --prefix simple-docker-backend",
+    "build-frontend": "npm run build --prefix simple-docker-frontend",
+    "prepackage": "mkdir dist && npm run copy-backend && npm run copy-frontend && npm run copy-manifest && npm run copy-license && npm run write-requirements",
+    "package": "package-urcap dist target",
+    "copy-backend": "copy-file simple-docker-backend/target/* dist/simple-docker-backend",
+    "copy-frontend": "cpy \"simple-docker-frontend/**/*\" ../../dist --parents --cwd=simple-docker-frontend/dist",
+    "copy-manifest": "copy-file manifest.yaml dist",
+    "write-requirements": "write-ur-packages ./simple-docker-frontend/package.json dist/requirements.txt",
+    "copy-license": "copy-file LICENSE dist",
+    "clean-dist": "rimraf dist",
+    "clean-target": "rimraf target",
+    "install-urcap": "install-urcap 'target/simple-docker*.urcapx'",
+    "delete-urcap": "delete-urcap universal-robots simple-docker"
+  },
+  "private": true,
+  "devDependencies": {
+    "@universal-robots/urcap-utils": "1.0.5",
+    "rimraf": "3.0.2",
+    "cpy-cli": "3.1.1"
+  }
+}

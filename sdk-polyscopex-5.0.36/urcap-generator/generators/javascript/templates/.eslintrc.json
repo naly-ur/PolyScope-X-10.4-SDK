@@ -1,0 +1,34 @@
+{
+  "root": true,
+  "plugins": ["eslint-plugin-jsdoc", "unused-imports", "eslint-plugin-html"],
+  "overrides": [
+    {
+      "files": [
+        "src/**/*.js"
+      ],
+      "extends": "eslint:recommended",
+      "rules": {
+        "arrow-parens": [
+          "off",
+          "always"
+        ],
+        "dot-notation": "error",
+        "id-denylist": "error",
+        "import/order": "off",
+        "indent": "error",
+        "no-empty-function": "off",
+        "no-shadow": "error",
+        "unused-imports/no-unused-imports": "error",
+        "no-unused-expressions": "error",
+        "no-use-before-define": "off",
+        "semi": "error",
+        "no-underscore-dangle": "off"
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ]
+    }
+  ]
+}

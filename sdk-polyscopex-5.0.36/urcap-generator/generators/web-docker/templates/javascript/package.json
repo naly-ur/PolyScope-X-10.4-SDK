@@ -1,0 +1,36 @@
+{
+  "name": "<%= urcapId %>",
+  "version": "0.0.0",
+  "description": "",
+  "private": true,
+  "licence": "Apache-2.0",
+  "scripts": {
+    "start": "webpack serve",
+    "prebuild": "rimraf ./dist",
+    "build": "webpack",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "threads": "1.7.0",
+    "rxjs": "7.8.1"
+  },
+  "devDependencies": {
+    "@universal-robots/contribution-api": "17.6.1",
+    "@universal-robots/ui-models": "0.14.1",
+    "@universal-robots/utilities-units": "5.3.1",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.2.1",
+    "copy-webpack-plugin": "^9.0.1",
+    "terser-webpack-plugin": "^5.2.4",
+    "bestzip": "^2.2.1",
+    "eslint": "^8.0.1",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-jsdoc": "^39.6.4",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "eslint-plugin-unused-imports": "^2.0.0",
+    "eslint-plugin-html": "^6.2.0",
+    "guid-typescript": "^1.0.9",
+    "rimraf": "3.0.2"
+  }
+}

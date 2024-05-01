@@ -1,0 +1,22 @@
+{
+<% if (hasProgramNode) { %>  "program": {
+    "tree": {
+      "nodes": {
+        "<%= programTagName %>": "<%= programNodeTitle %>"
+      }
+    }
+  }<% } if (hasProgramNode && (hasApplicationNode || hasSmartSkill)) { %>,
+<% } if (hasApplicationNode) { %>  "application": {
+    "nodes": {
+      "<%= applicationTagName %>": {
+        "title": "<%= applicationNodeTitle %>",
+        "supportiveText": "<%= applicationNodeTitle %> - Supportive Text"
+      }
+    }
+  }<% } if (hasApplicationNode && hasSmartSkill) { %>,
+  <% } if (hasSmartSkill) { %>  "smart_skills": {
+    "<%= smartSkillTagName %>": {
+      "title": "<%= smartSkillTitle %>"
+    }
+  }<% } %>
+}

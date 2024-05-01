@@ -1,0 +1,11 @@
+@import '../../../styles.scss';
+
+.component {
+    .section {
+        padding: 0.5rem 0.5rem 1rem;
+
+        ur-button {
+            margin-right: var(--spacing-05);
+        }
+    }
+}

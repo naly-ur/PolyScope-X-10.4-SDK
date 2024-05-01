@@ -1,0 +1,20 @@
+{
+  "applicationNodes": [
+    {
+      "translationPath": "assets/i18n/",
+      "behaviorURI": "gripper-application.worker.js",
+      "presenterURI": "main.js",
+      "componentTagName": "ur-simple-gripper-application"
+    }
+  ],
+  "programNodes": [
+    {
+      "excludeFromToolbox": false,
+      "translationPath": "assets/i18n/",
+      "iconURI": "assets/icons/gripper_node.svg",
+      "behaviorURI": "gripper-node.worker.js",
+      "presenterURI": "main.js",
+      "componentTagName": "ur-simple-gripper-node"
+    }
+  ]
+}

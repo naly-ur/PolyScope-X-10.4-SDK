@@ -1,0 +1,101 @@
+<div *ngIf="contributedNode?.parameters && variables && variableOptions && wayPointSources" class="section inline-component">
+    <ur-dropdown
+        [label]="'presenter.assignment.label.name' | translate"
+        [allowsOptionCreation]="true"
+        [options]="variableOptions"
+        [validators]="[variableNameValidator]"
+        (optionAdd)="setNewVariable($event)"
+        (selectionChange)="selectVariable($event)"
+        [selectedOption]="selectedVariableOption()"
+        [placeholder]="'presenter.assignment.label.create_new_option' | translate"
+        [required]="true"
+        data-testid="assignment-variable-selector"
+    >
+    </ur-dropdown>
+    <hr *ngIf="contributedNode.parameters.variable?.valueType" class="vertical" />
+
+    <ur-dropdown
+        *ngIf="variableTypes.length > 0"
+        [label]="'presenter.assignment.label.pick_type' | translate"
+        [labelFactory]="capitalizedLabel"
+        [options]="variableTypes"
+        [selectedOption]="contributedNode.parameters.variable?.valueType"
+        (selectionChange)="setType($event)"
+        (opened)="valueTypeOpen = true"
+        (closed)="tickValueOpen()"
+        bindValue="valueType"
+        [disabled]="!!contributedNode.parameters.variable?.reference"
+        data-testid="assignment-type-selector"
+    ></ur-dropdown>
+    <ur-dropdown
+        *ngIf="this.contributedNode.parameters.variable.valueType === 'waypoint'"
+        [label]="'presenter.assignment.label.options' | translate"
+        [options]="wayPointSources"
+        [selectedOption]="contributedNode.parameters.waypointParameters?.waypointSource"
+        bindValue="value"
+        (selectionChange)="setWaypointSource($event)"
+        data-testid="select-waypoint-dropdown"
+    >
+    </ur-dropdown>
+    <div class="pill-container">
+        <ur-tab-input
+            *ngIf="isTabInput()"
+            [disabled]="valueTypeOpen"
+            [label]="'presenter.assignment.label.expression' | translate"
+            [variables]="filteredVariables()"
+            [precision]="this.contributedNode.parameters.variable.valueType === 'float' ? 2 : 0"
+            [valueType]="this.contributedNode.parameters.variable.valueType"
+            [validators]="expressionValidators"
+            [tabInputValue]="getTabInputExpression()"
+            [valid]="contributedNode.parameters.isValid"
+            [attr.data-testid]="'assignment-expression-input'"
+            (valueChanged)="setTabInputExpression($event)"
+        >
+        </ur-tab-input>
+        <ur-dialog-input
+            *ngIf="
+                (!isTabInput() && this.expressionValidators.length > 0 && contributedNode.parameters.variable.valueType !== 'waypoint') ||
+                (!isTabInput() && getWaypointSource() === PositionType.Expression)
+            "
+            type="text"
+            [label]="'presenter.assignment.label.expression' | translate"
+            [value]="contributedNode.parameters.expression"
+            (valueChanged)="setExpression($event)"
+            [validators]="expressionValidators"
+            [validation]="{ minLength: 0, maxLength: 1024 }"
+            [disabled]="valueTypeOpen"
+            [translations]="{ requiredValidationMessage: 'presenter.assignment.empty_expression_error' | translate }"
+            [attr.data-testid]="'assignment-expression-input'"
+        ></ur-dialog-input>
+    </div>
+
+    <div
+        *ngIf="contributedNode.parameters.variable.valueType === 'waypoint' && getWaypointSource() === PositionType.Teach"
+        class="inline-component"
+    >
+        <ur-button
+            (handleClick)="openMoveScreenClicked()"
+            [disabled]="getWaypointSource() === PositionType.Expression"
+            class="waypoint-button"
+            [type]="contributedNode.parameters.waypointParameters?.position ? 'cta' : 'invalid'"
+            data-testid="assignment-waypoint-button"
+            onclick="this.blur()"
+        >
+            {{
+                isPositionSet()
+                    ? ('presenter.assignment.button_labels.edit_waypoint' | translate)
+                    : ('presenter.assignment.button_labels.set_waypoint' | translate)
+            }}
+        </ur-button>
+        <ur-button
+            (handleClick)="openAutoMoveScreen()"
+            [disabled]="!isPositionSet() || getWaypointSource() === PositionType.Expression"
+            class="waypoint-button"
+            type="cta"
+            data-testid="assignment-waypoint-move-here-button"
+            onclick="this.blur()"
+        >
+            {{ 'presenter.assignment.button_labels.move_here' | translate }}
+        </ur-button>
+    </div>
+</div>

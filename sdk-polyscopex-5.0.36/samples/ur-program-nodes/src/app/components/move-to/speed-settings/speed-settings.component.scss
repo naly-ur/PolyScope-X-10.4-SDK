@@ -1,0 +1,19 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-05);
+}
+
+ur-dropdown {
+    width: 150px;
+}
+
+ur-tab-input {
+    display: block;
+    width: 150px;
+}
+
+.input-row {
+    display: flex;
+    column-gap: var(--spacing-05);
+}

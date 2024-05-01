@@ -1,0 +1,36 @@
+version: "3.5"
+
+services:
+  runtime:
+    image: universalrobots/ursim_polyscopex:0.9.68
+    environment:
+      - ROBOT_TYPE=${ROBOT_TYPE}
+      - HOST_ARCH=${HOST_ARCH}
+      - ROS2_NAMESPACE=${ROS2_NAMESPACE}
+    privileged: true
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - ${PORT}:80
+    volumes:
+      # Use persistent volumes for installed-urcaps
+      - installed-urcaps:/var/urcaps
+      - ur-snippets:/etc/nginx/ur-snippets
+      - dockervol:/var/lib/docker
+      # Use persistent volume for applications
+      - applications:/ur/bin/backend/applications
+    network_mode: bridge
+
+volumes:
+  installed-urcaps:
+    external: true
+    name: ${URCAPS_VOLUME}
+  ur-snippets:
+    external: true
+    name: ${NGINX_SNIPPETS_VOLUME}
+  applications:
+    external: true
+    name: ${APPLICATION_VOLUME}
+  dockervol:
+    external: true
+    name: ${DOCKER_VOLUME}

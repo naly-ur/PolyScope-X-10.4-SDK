@@ -1,0 +1,22 @@
+metadata:
+  vendorID: universal-robots
+  urcapID: macvlan
+  version: 1.0.0
+  vendorName: Universal Robots
+  urcapName: macvlan
+  contactInfo: Energivej 25, 5260 Odense S, Denmark
+  description: Example demonistrating use of USB to Ethernet adapter
+  copyright: Copyright (c) 2009-2023 Universal Robots. All rights reserved.
+  licenseType: Sample license
+artifacts:
+  containers:
+  - id: macvlan
+    image: macvlan:latest
+    ingress:
+      - id: "rest-api"
+        containerPort: 8001
+        proxyUrl: /
+    networks:
+      - id: "eth1"
+        type: macvlan
+        description: "Sample network"

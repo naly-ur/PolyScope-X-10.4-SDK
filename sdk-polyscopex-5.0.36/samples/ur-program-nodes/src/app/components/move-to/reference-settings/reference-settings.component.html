@@ -1,0 +1,18 @@
+<ur-heading>{{ 'presenter.move-to.label.reference' | translate }}</ur-heading>
+<ur-heading size="small" type="h2">{{ 'presenter.move-to.advanced_description.reference' | translate }}</ur-heading>
+<ur-dropdown
+    [label]="'presenter.move-to.label.frame' | translate"
+    [disabled]="false"
+    [options]="frames"
+    [selectedOption]="settings.frame.frameId"
+    [labelFactory]="frameLabelFactory"
+    (selectionChange)="setFrame($event)"
+    [bindValue]="'frameId'"
+    data-testid="frame-dropdown"
+></ur-dropdown>
+<ur-dropdown
+    [label]="'presenter.move-to.label.tcp' | translate"
+    [disabled]="true"
+    [options]="['TCP_1']"
+    [selectedOption]="'TCP_1'"
+></ur-dropdown>

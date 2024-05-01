@@ -1,0 +1,10 @@
+{
+    "application": {
+        "nodes": {
+            "ur-simple-xmlrpc-application-node": {
+                "title": "Simple XML-RPC Application Node",
+                "supportiveText": "Check it out!"
+            }
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+  "name": "simple-xmlrpc",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "cd simple-xmlrpc-frontend && npm run start",
+    "install-frontend": "cd simple-xmlrpc-frontend && npm install",
+    "install-backend": "cd simple-xmlrpc-backend && npm install",
+    "lint": "cd simple-xmlrpc-frontend && npm run lint",
+    "postinstall": "npm run install-frontend && npm run install-backend",
+    "prebuild": "npm run clean-dist && npm run clean-target",
+    "build-arm": "export ARCH=linux/arm64 && npm run build",
+    "build": "npm run build-backend && npm run build-frontend",
+    "postbuild": "npm run package",
+    "build-backend": "npm run build --prefix simple-xmlrpc-backend",
+    "build-frontend": "npm run build --prefix simple-xmlrpc-frontend",
+    "prepackage": "mkdir dist && npm run copy-backend && npm run copy-frontend && npm run copy-manifest && npm run copy-license",
+    "package": "package-urcap dist target",
+    "copy-backend": "cpy \"simple-xmlrpc-backend/dist/*\" dist/simple-xmlrpc-backend",
+    "copy-frontend": "cpy \"simple-xmlrpc-frontend/**/*\" ../../dist --parents --cwd=simple-xmlrpc-frontend/dist",
+    "copy-manifest": "cpy manifest.yaml dist",
+    "copy-license": "cpy LICENSE dist",
+    "clean-dist": "rimraf dist",
+    "clean-target": "rimraf target",
+    "install-urcap": "install-urcap 'target/simple-xmlrpc*.urcapx'",
+    "delete-urcap": "delete-urcap ur simple-xmlrpc"
+  },
+  "private": true,
+  "devDependencies": {
+    "@universal-robots/urcap-utils": "1.0.5",
+    "rimraf": "3.0.2",
+    "cpy-cli": "3.1.1"
+  }
+}

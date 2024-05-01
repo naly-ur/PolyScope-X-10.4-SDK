@@ -1,0 +1,11 @@
+{
+  "applicationNodes": [
+    {
+      "translationPath": "assets/i18n/",
+      "behaviorURI": "simple-rest-application-node.worker.js",
+      "presenterURI": "main.js",
+      "componentTagName": "ur-simple-rest-application-node"
+    }
+  ],
+  "programNodes": []
+}

@@ -1,0 +1,46 @@
+<div *ngIf="applicationNode" class="component">
+    <div class="app-header">
+        {{"presenter.simple-gripper.label.app-description" | translate}}<br/>
+    </div>
+    <div class="app-section-input">
+        <div>
+            <ur-dialog-input
+                (valueChanged)="setForceValue($event)"
+                [label]="'presenter.simple-gripper.label.force' | translate"
+                [validation]="{ min: forceValueConstraints.lowerLimit, max: forceValueConstraints.upperLimit }"
+                [translations]="{ rangeOverflowMessage: '100N is maximum allowed' | translate }"
+                [unit]="'N'"
+                [type]="'number'"
+                [value]="applicationNode.force.toString()"
+            >
+            </ur-dialog-input>
+        </div>
+    </div>
+    <div class="app-section">
+        <div>
+            <ur-button
+                class="button"
+                [attr.data-testid]="'simple-gripper_close_btn'"
+                [type]="'cta'"
+                (handleClick)="onOpenClose(close)"
+                [disabled]="!canClose()"
+            >
+                {{'presenter.simple-gripper.label.close' | translate}}
+            </ur-button>
+            <ur-button
+                class="button"
+                [attr.data-testid]="'simple-gripper_open_btn'"
+                [type]="'cta'"
+                (handleClick)="onOpenClose(open)"
+                [disabled]="!canOpen()"
+            >
+                {{'presenter.simple-gripper.label.open' | translate}}
+            </ur-button>
+        </div>
+    </div>
+    <div class="app-section">
+        <div>
+            <span>{{ getGripperState() }}</span>
+        </div>
+    </div>
+</div>

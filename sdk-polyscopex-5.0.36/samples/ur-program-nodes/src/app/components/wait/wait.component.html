@@ -1,0 +1,81 @@
+<div *ngIf="contributedNode?.parameters?.type" class="inline-component">
+    <ur-dropdown
+        [label]="'presenter.wait.label.waitType' | translate"
+        [options]="typeSelection"
+        [selectedOption]="contributedNode.parameters.type"
+        [required]="false"
+        (selectionChange)="setType($event)"
+        bindValue="value"
+        data-testid="select-event-type-dropdown"
+    ></ur-dropdown>
+
+    <hr class="vertical" />
+
+    <div *ngIf="contributedNode?.parameters?.type === 'time'">
+        <ur-tab-input
+            [label]="'presenter.wait.label.time' | translate"
+            [tabInputValue]="getTime()"
+            [unit]="contributedNode.parameters.time?.entity.unit"
+            valueType="float"
+            [validators]="timeValidators"
+            [precision]="2"
+            [step]="1"
+            [variables]="variables"
+            (valueChanged)="setTime($event)"
+            [positiveDigitsOnly]="true"
+            data-testid="select-time-value-tab-input"
+        ></ur-tab-input>
+    </div>
+
+    <div *ngIf="contributedNode?.parameters?.type === 'signalInput' && sources" class="inline-component">
+        <ur-dropdown
+            [label]="'source' | translate"
+            [options]="sources"
+            [selectedOption]="contributedNode.parameters.signalInput?.sourceID"
+            (selectionChange)="setSourceID($event)"
+            data-testid="select-source-dropdown"
+        ></ur-dropdown>
+        <div class="pill-container">
+            <ur-dropdown
+                *ngIf="contributedNode.parameters.signalInput?.sourceID"
+                [label]="'signal' | translate"
+                [options]="signals"
+                [labelFactory]="getSignalLabel"
+                [selectedOption]="getSelectedSignal()"
+                (selectionChange)="setSignalID($event)"
+                bindValue="signalID"
+                data-testid="select-signal-dropdown"
+            ></ur-dropdown>
+        </div>
+
+        <div class="inline-component" *ngIf="contributedNode.parameters.signalInput?.signalID">
+            <ur-dropdown
+                *ngIf="getValueTypeForSignal() === SignalValueType.BOOLEAN"
+                [label]="'input' | translate"
+                [options]="digitalValueOptions"
+                [selectedOption]="getValueLabel()"
+                (selectionChange)="setDigitalValue($event)"
+                data-testid="select-digital-value-dropdown"
+            ></ur-dropdown>
+            <ur-dropdown
+                *ngIf="getValueTypeForSignal() === SignalValueType.FLOAT"
+                [label]="'operator' | translate"
+                [options]="analogOperators"
+                [selectedOption]="contributedNode.parameters.signalInput.analogOperator"
+                (selectionChange)="setAnalogOperator($event)"
+                data-testid="select-digital-value-dropdown"
+            ></ur-dropdown>
+            <ur-dialog-input
+                *ngIf="getValueTypeForSignal() === SignalValueType.FLOAT"
+                type="number"
+                data-testid="select-analog-value"
+                [label]="'input' | translate"
+                [unit]="getAnalogUnit()"
+                [value]="contributedNode.parameters.signalInput.value.value"
+                [validators]="analogValueValidators"
+                (valueChanged)="setAnalogValue($event)"
+            >
+            </ur-dialog-input>
+        </div>
+    </div>
+</div>

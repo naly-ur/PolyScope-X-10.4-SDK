@@ -1,0 +1,49 @@
+<div *ngIf="contributedNode?.parameters?.type" class="inline-component">
+    <ur-dropdown
+        [label]="'presenter.loop.label.loop_type' | translate"
+        [options]="loopOptions"
+        [selectedOption]="contributedNode.parameters.type"
+        (selectionChange)="setType($event)"
+        bindValue="value"
+        data-testid="select-loop-type"
+    ></ur-dropdown>
+
+    <hr *ngIf="contributedNode.parameters.type !== 'always'" class="vertical" />
+
+    <div
+        *ngIf="contributedNode.parameters.type === 'xtimes' && !!contributedNode.parameters.loopVariable && validators && xTimeValidator"
+        class="inline-component motion-attributes"
+    >
+        <ur-dialog-input
+            [label]="'presenter.loop.label.loop_xtimes' | translate"
+            [value]="contributedNode.parameters.xtimes.toString()"
+            [validators]="[xTimeValidator]"
+            type="number"
+            forcePencilIcon="true"
+            positiveDigitsOnly="true"
+            data-testid="loop-x-times-input"
+            (valueChanged)="setXTimes($event)"
+        >
+        </ur-dialog-input>
+        <ur-dialog-input
+            type="text"
+            [label]="'presenter.loop.label.variable_name' | translate"
+            [value]="contributedNode.parameters.loopVariable.name"
+            (valueChanged)="setVariable($event)"
+            [validation]="{ maxLength: 1000 }"
+            [validators]="validators"
+            [disabled]="contributedNode.parameters.type !== 'xtimes'"
+            [attr.data-testid]="'loop-name-input'"
+        ></ur-dialog-input>
+    </div>
+    <div *ngIf="contributedNode?.parameters?.type === 'expression' && expressionValidator" class="inline-component">
+        <ur-dialog-input
+            (valueChanged)="setExpression($event)"
+            [label]="'presenter.loop.label.expression' | translate"
+            [value]="contributedNode?.parameters?.expression"
+            [disabled]="contributedNode?.parameters?.type !== 'expression'"
+            [validators]="[expressionValidator]"
+            data-testid="loop-expression-input"
+        ></ur-dialog-input>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+metadata:
+  vendorID: <%= vendorId %>
+  urcapID: <%= urcapId %>
+  vendorName: "<%= vendorName %>"
+  urcapName: "<%= urcapName %>"
+  version: 1.0.0
+artifacts:
+  webArchives:
+  - id: <%= artifactId %>-frontend
+    folder: <%= artifactId %>-frontend
+  containers:
+  - id: <%= artifactId %>-backend
+    image: <%= artifactId %>-backend:latest
+    mounts:
+    - mount: tmpfs:/root/.ros
+      access: rw

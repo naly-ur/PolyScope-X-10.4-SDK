@@ -1,0 +1,20 @@
+{
+  "applicationNodes": [<% if (hasApplicationNode) { %>
+    {
+      "translationPath": "assets/i18n/",
+      "behaviorURI": "<%= applicationNodeName %>.worker.js",
+      "presenterURI": "main.js",
+      "componentTagName": "<%= applicationTagName %>"
+    }
+  <% } %>],
+  "programNodes": [<% if (hasProgramNode) { %>
+    {
+      "excludeFromToolbox": false,
+      "translationPath": "assets/i18n/",
+      "iconURI": "assets/icons/<%= programNodeName %>.svg",
+      "behaviorURI": "<%= programNodeName %>.worker.js",
+      "presenterURI": "main.js",
+      "componentTagName": "<%= programTagName %>"
+    }
+  <% } %>]
+}

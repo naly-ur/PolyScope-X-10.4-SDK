@@ -1,0 +1,17 @@
+metadata:
+  vendorID: universal-robots
+  urcapID: simple-ros2-node
+  version: 0.0.3
+  vendorName: Universal Robots
+  urcapName: Simple ROS2 node
+  contactInfo: Energivej 25, 5260 Odense S, Denmark
+  description: A simple ROS2 node sample showing IO communication using controller
+  copyright: Copyright (c) 2009-2022 Universal Robots. All rights reserved.
+  licenseType: Sample license
+artifacts:
+  containers:
+  - id: simple-ros2-node
+    image: simple-ros2-node:latest
+    mounts:
+      - mount: tmpfs:/root/.ros
+        access: rw

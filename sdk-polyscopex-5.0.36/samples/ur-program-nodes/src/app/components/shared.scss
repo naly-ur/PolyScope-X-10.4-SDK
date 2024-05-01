@@ -1,0 +1,103 @@
+.inline-component {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    gap: var(--spacing-03);
+
+    ur-title {
+        white-space: nowrap;
+    }
+
+    ur-input-field {
+        min-width: 180px;
+    }
+
+    ur-radio-group {
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+}
+
+.selector {
+    display: flex;
+    padding: var(--spacing-02) var(--spacing-03);
+    background: var(--color-background-interactive-default);
+    border: var(--border-form-input);
+    border-radius: var(--border-radius-medium);
+    box-sizing: border-box;
+    cursor: pointer;
+    height: 40px;
+    width: 180px;
+    --label-color: var(--color-font-secondary);
+    --value-color: var(--color-font-primary);
+    justify-content: space-between;
+
+    &.warning {
+        --label-color: var(--color-font-warning);
+        --value-color: var(--color-font-warning);
+        color: var(--color-font-warning);
+        border-color: var(--color-border-warning);
+    }
+
+    &.disabled {
+        background: var(--color-background-interactive-disabled);
+        --label-color: var(--color-font-disabled);
+        --value-color: var(--color-font-disabled);
+        color: var(--color-font-disabled);
+        border-color: var(--color-font-disabled);
+    }
+
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        overflow: hidden;
+
+        .label {
+            height: 8px;
+            font: var(--font-label);
+            color: var(--label-color);
+            white-space: nowrap;
+        }
+
+        .value {
+            font: var(--font-body-medium);
+            width: 100%;
+            height: 16px;
+            color: var(--value-color);
+            line-height: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .icon {
+        transform: rotate(90deg);
+    }
+}
+
+.number-inline-wrapper {
+    height: var(--node-height);
+}
+
+.component {
+    .section {
+        padding: var(--spacing-05) 0 0;
+    }
+}
+
+.pill-container {
+    display: flex;
+    flex-direction: row;
+
+    ur-dropdown {
+        max-width: 160px;
+    }
+
+    ur-dialog-input,
+    ur-tab-input {
+        max-width: 240px;
+    }
+}

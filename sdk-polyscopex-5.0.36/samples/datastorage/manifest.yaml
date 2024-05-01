@@ -1,0 +1,34 @@
+metadata:
+  vendorID: universal-robots
+  urcapID: data-storage-demo
+  version: 1.0.0
+  vendorName: Universal Robots
+  urcapName: URCap Data Storage
+  contactInfo: Energivej 25, 5260 Odense S, Denmark
+  description: Example demonistrating use of USB as a storage inside the container
+  copyright: Copyright (c) 2009-2023 Universal Robots. All rights reserved
+  licenseType: Sample license
+artifacts:
+  containers:
+    - id: data-storage
+      image: data-storage:latest
+      mounts:
+        # persistant storage container mount. Stores configuration files. These files are persisted during the update/upgrade/reboot.
+        # example: persistent:/etc/urcap/config
+        # example: persistent:/var/log/urcap
+        - mount: persistent:/data/persistent
+          access: rw
+        # temporary storage container mount. Stores temporary files. These files are not persisted during the update/upgrade/reboot.
+        # example tmpfs:/usr/local/urcap/tmp
+        # example tmpfs:/tmp
+        - mount: tmpfs:/data/tmp
+          access: rw
+        # removable storage container mount. Stores files on a removable storage device. These files are not persisted during the update/upgrade/reboot.
+        # example RemovableStorage:/etc/container
+        # example RemovableStorage:/mnt
+        - mount: RemovableStorage:/data/removable
+          access: rw
+      ingress:
+        - id: "flask-server"
+          containerPort: 8000
+          proxyUrl: /

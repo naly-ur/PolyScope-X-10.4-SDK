@@ -1,0 +1,34 @@
+{
+  "name": "<%= urcapId %>",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "cd <%= urcapId %>-frontend && npm run start",
+    "install-frontend": "cd <%= urcapId %>-frontend && npm install",
+    "install-backend": "cd <%= urcapId %>-backend && npm install",
+    "lint": "cd <%= urcapId %>-frontend && npm run lint",
+    "postinstall": "npm run install-frontend && npm run install-backend",
+    "prebuild": "npm run clean-dist && npm run clean-target",
+    "build-arm": "export ARCH=linux/arm64 && npm run build",
+    "build": "npm run build-backend && npm run build-frontend",
+    "postbuild": "npm run package",
+    "build-backend": "npm run build --prefix <%= urcapId %>-backend",
+    "build-frontend": "npm run build --prefix <%= urcapId %>-frontend",
+    "prepackage": "mkdir dist && npm run copy-backend && npm run copy-frontend && npm run copy-manifest && npm run copy-license && npm run write-requirements",
+    "package": "package-urcap dist target",
+    "copy-backend": "cpy \"<%= urcapId %>-backend/dist/*\" dist/<%= urcapId %>-backend",
+    "copy-frontend": "cpy \"<%= urcapId %>-frontend/**/*\" ../../dist --parents --cwd=<%= urcapId %>-frontend/dist",
+    "copy-manifest": "cpy manifest.yaml dist",
+    "write-requirements": "write-ur-packages ./<%= urcapId %>-frontend/package.json dist/requirements.txt",
+    "copy-license": "cpy LICENSE dist",
+    "clean-dist": "rimraf dist",
+    "clean-target": "rimraf target",
+    "install-urcap": "install-urcap 'target/<%= urcapId %>*.urcapx'",
+    "delete-urcap": "delete-urcap <%= vendorId %> <%= urcapId %>"
+  },
+  "private": true,
+  "devDependencies": {
+    "@universal-robots/urcap-utils": "1.0.5",
+    "rimraf": "3.0.2",
+    "cpy-cli": "3.1.1"
+  }
+}

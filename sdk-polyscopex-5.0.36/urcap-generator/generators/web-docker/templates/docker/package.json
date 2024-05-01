@@ -1,0 +1,16 @@
+{
+  "name": "<%= urcapId %>",
+  "version": "0.0.0",
+  "scripts": {
+    "lint": "node -e \"console.log('Linting not supported in docker')\"",
+    "prebuild": "rimraf dist",
+    "build": "npm run build-docker-image && npm run save-docker-image",
+    "build-docker-image": "docker build --platform ${ARCH:-linux/amd64} -t <%= urcapId %>:latest .",
+    "save-docker-image": "mkdir dist && docker save -o dist/<%= urcapId %>.tar <%= urcapId %>:latest"
+  },
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "rimraf": "^3.0.2"
+  }
+}

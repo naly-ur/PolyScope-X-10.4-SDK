@@ -1,0 +1,53 @@
+<div *ngIf="contributedNode" class="inline-component">
+    <ur-radio-group
+        (radioChange)="changeType($event.value)"
+        [value]="contributedNode.parameters.action"
+        buttonPosition="inline"
+    >
+        <ur-radio-button
+            [checked]="contributedNode.parameters.action === closeAction"
+            [value]="closeAction"
+            [attr.data-testid]="'simple-gripper-control-type-close'"
+        >
+            {{ 'presenter.simple-gripper.label.close' | translate }}
+        </ur-radio-button>
+        <ur-radio-button
+            [checked]="contributedNode.parameters.action === openAction"
+            [value]="openAction"
+            [attr.data-testid]="'simple-gripper-control-type-open'"
+        >
+            {{ 'presenter.simple-gripper.label.open' | translate }}
+        </ur-radio-button>
+    </ur-radio-group>
+    <ur-checkbox
+        [checked]="contributedNode.parameters.blocking"
+        [label]="'presenter.simple-gripper.label.blocking' | translate"
+        (handleChange)="toggleBlocking()">
+    </ur-checkbox>
+    <ur-dialog-input *ngIf="showCallbacks()"
+                     (valueChanged)="setOnSuccessValue($event.detail)"
+                     [label]="'presenter.simple-gripper.label.onsuccess' | translate"
+                     [value]="contributedNode.parameters.onSuccessCallback"
+    >
+    </ur-dialog-input>
+    <ur-dialog-input *ngIf="showCallbacks()"
+                     (valueChanged)="setOnFailureValue($event.detail)"
+                     [label]="'presenter.simple-gripper.label.onfailure' | translate"
+                     [value]="contributedNode.parameters.onFailureCallback"
+    >
+    </ur-dialog-input>
+    <ur-button
+        [attr.data-testid]="'simple-gripper_close_btn'"
+        [type]="'cta'"
+        (handleClick)="onOpenClose(closeAction)"
+    >
+        {{'presenter.simple-gripper.label.close' | translate}}
+    </ur-button>
+    <ur-button
+        [attr.data-testid]="'simple-gripper_open_btn'"
+        [type]="'cta'"
+        (handleClick)="onOpenClose(openAction)"
+    >
+        {{'presenter.simple-gripper.label.open' | translate}}
+    </ur-button>
+</div>

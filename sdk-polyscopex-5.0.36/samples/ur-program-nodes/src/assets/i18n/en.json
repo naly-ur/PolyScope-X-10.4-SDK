@@ -1,0 +1,157 @@
+{
+  "select": "--Select--",
+  "high": "High",
+  "kg": "kg",
+  "lb": "lb",
+  "low": "Low",
+  "range-error": "The value must be between {{min}} and {{max}}",
+  "value": "Value",
+  "property": "Property",
+  "source": "Source",
+  "sources": "Sources",
+  "signal": "Signal",
+  "signals": "Signals",
+  "input": "Input",
+  "output": "Output",
+  "create": "Create",
+  "edit": "Edit",
+  "operator": "Operator",
+  "program": {
+    "tree": {
+      "nodes": {
+        "ur-sample-node-assignment": "Assignment (sample)",
+        "ur-sample-node-loop": "Loop (sample)",
+        "ur-sample-node-move-to": "Move to (sample)",
+        "ur-sample-node-set": "Set (sample)",
+        "ur-sample-node-wait": "Wait (sample)",
+        "ur-sample-node-tool-force": "Tool Force (sample)"
+      }
+    }
+  },
+  "presenter": {
+    "validation": {
+      "empty-description": "Description can not be empty",
+      "empty-function-name-error": "Function name cannot be empty",
+      "function-name-exists-error": "Function name is already in use",
+      "function-name-invalid-error": "Function name contains invalid characters",
+      "string-too-long": "String must not exceed {{max-length}} characters",
+      "empty-module-name-error": "Module name cannot be empty",
+      "module-name-exists-error": "Module name is already in use",
+      "module-name-invalid-error": "Module name contains invalid characters",
+      "expression-invalid-error": "Expression must be between {{minLength}} and {{maxLength}} characters",
+      "min-value-error": "Minimum value has to be lower than {{maxValue}}",
+      "max-value-error": "Maximum value has to be higher than {{minValue}}",
+      "empty-value-error": "Value cannot be empty"
+    },
+    "assignment": {
+      "button_labels": {
+        "edit_waypoint": "Edit Waypoint",
+        "move_here": "Move Here",
+        "set_waypoint": "Set Waypoint"
+      },
+      "label": {
+        "expression": "Set Expression",
+        "name": "Variable",
+        "pick_variable": "Variable",
+        "pick_variable_placeholder": "Variable name",
+        "create_new_option": "Create",
+        "edit_option": "Edit",
+        "pick_type": "Value Type",
+        "teach": "Edit Waypoint",
+        "options": "Options"
+      },
+      "empty_expression_error": "Expression must contain a value",
+      "max_expression_error": "Expression must not exceed 1024 characters"
+    },
+    "loop": {
+      "label": {
+        "loop_type": "Loop Type",
+        "loop_always": "Loop Always",
+        "loop_xtimes": "Loop X Times",
+        "xtimes": "Count:",
+        "expression": "While Expression:",
+        "variable_name": "Variable Name:"
+      },
+      "label_dropdown": {
+        "loop_always": "Loop Always",
+        "loop_xtimes": "Loop X Times",
+        "expression": "While Expression"
+      },
+      "xtimes": {
+        "min_length_error": "The value cannot be empty and value must be min {{min}}"
+      }
+    },
+    "move-to": {
+      "label": {
+        "move_type": "Move type",
+        "name": "Name",
+        "edit_point": "Edit Point",
+        "teach_point": "Teach Point",
+        "move_here": "Move Here",
+        "select_variable": "Select Variable",
+        "expression": "Expression",
+        "variable": "Variable",
+        "type_joint": "Joint",
+        "type_linear": "Linear",
+        "type_variable": "Variable",
+        "type_expression": "Expression",
+        "waypoint": "Waypoint",
+        "more": "More",
+        "speed": "Speed",
+        "reference": "Reference",
+        "transform": "Transform",
+        "blend": "Blend",
+        "acceleration": "Acceleration",
+        "frame": "Frame",
+        "tcp": "TCP",
+        "custom": "Custom",
+        "transform_position": "Transform position",
+        "pose": "Pose",
+        "none": "None",
+        "more_settings": "More settings"
+      },
+      "advanced_description": {
+        "speed": "Specify how fast the robot shall move to this position",
+        "reference": "Specify a reference Frame and Tool Center Point",
+        "transform": "Specify how the position needs to be transformed",
+        "blend": "Specify how the robot should move through the position"
+      },
+      "blend": {
+        "type": "Blend type",
+        "radius": "Radius",
+        "disabled": "Stop at this point",
+        "enabled": "Blend",
+        "input_help": "should return value in m"
+      }
+    },
+    "set": {
+      "label": {
+        "subtypeName": "Action Type"
+      },
+      "payload-warning": "Value exceeds rated payload of"
+    },
+    "tool-force": {
+      "force": "Force",
+      "test": "Test",
+      "validation-error": "Force must be between -{{lim}} N and {{lim}} N.",
+      "describe": "The robot is compliant in the enabled axes, allowing the robot to avoid a protective stop. Specify a positive or negative force to have the robot compensate in the given axis.",
+      "test-help": "Press the test button to enable test mode, and then hold the free-drive button on the Teach Pendant to test the effects of the Tool Force node."
+    },
+    "variable_name": {
+      "empty_expression_error": "Expression must contain a value",
+      "max_expression_error": "Expression must not exceed 1024 characters",
+      "empty_variable_name_error": "Variable name cannot be empty",
+      "name_too_long_error": "Variable name must not exceed 1024 characters",
+      "variable_name_exists_error": "Variable name is already in use",
+      "variable_name_invalid_error": "Variable name contains invalid characters"
+    },
+    "wait": {
+      "label": {
+        "subtypeName": "Event Type",
+        "signalInput": "Signal Input",
+        "time": "Time",
+        "waitType": "Wait Type"
+      }
+    }
+  }
+}

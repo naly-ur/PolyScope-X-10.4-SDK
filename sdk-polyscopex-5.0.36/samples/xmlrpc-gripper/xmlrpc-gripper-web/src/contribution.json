@@ -1,0 +1,20 @@
+{
+  "applicationNodes": [
+    {
+      "translationPath": "assets/i18n/",
+      "behaviorURI": "xmlrpc-gripper-app.worker.js",
+      "presenterURI": "main.js",
+      "componentTagName": "universal-robots-xmlrpc-gripper-web-xmlrpc-gripper-app"
+    }
+  ],
+  "programNodes": [
+    {
+      "excludeFromToolbox": false,
+      "translationPath": "assets/i18n/",
+      "iconURI": "assets/icons/xmlrpc-gripper-prg.svg",
+      "behaviorURI": "xmlrpc-gripper-prg.worker.js",
+      "presenterURI": "main.js",
+      "componentTagName": "universal-robots-xmlrpc-gripper-web-xmlrpc-gripper-prg"
+    }
+  ]
+}

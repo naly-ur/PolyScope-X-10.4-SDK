@@ -1,0 +1,40 @@
+<div *ngIf="applicationNode" class="component">
+    <div class="section">
+        <div class="main-section title">
+            <ur-heading [text]="'presenter.backend-data-label' | translate" class="data-label"></ur-heading>
+        </div>
+    </div>
+    <div class="section section-grid ur-surface-thin">
+        <div class="main-section">
+            <ur-dialog-input
+                [type]="'text'"
+                [label]="'presenter.data-field-description' | translate"
+                [readOnly]="true"
+                [disabled]="true"
+                [value]="messageEmitter$ | async"
+            >
+            </ur-dialog-input>
+            <ur-button
+                (handleClick)="fetchBackendData()"
+                [type]="'cta'"
+                class="button"
+            >
+                {{'presenter.fetch-button' | translate}}</ur-button>
+        </div>
+        <div class="main-section">
+            <ur-dialog-input
+                [type]="'text'"
+                [label]="'presenter.data-input-description' | translate"
+                (valueChanged)="saveNode()"
+                #data
+            ></ur-dialog-input>
+            <ur-button
+                (handleClick)="writeBackendData(data.value)"
+                [type]="'cta'"
+                class="button"
+            >
+                {{'presenter.write-button' | translate}}
+            </ur-button>
+        </div>
+    </div>
+</div>

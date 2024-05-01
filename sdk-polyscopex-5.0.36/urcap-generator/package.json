@@ -1,0 +1,30 @@
+{
+  "name": "generator-newurcap",
+  "version": "1.0.0",
+  "author": "Universal Robots",
+  "description": "Generator for URCap Contributions",
+  "type": "module",
+  "scripts": {
+    "newurcap": "yo newurcap --no-insight",
+    "newurcap:angular": "yo newurcap:angular --no-insight",
+    "newurcap:javascript": "yo newurcap:javascript --no-insight",
+    "newurcap:docker": "yo newurcap:docker --no-insight"
+  },
+  "files": [
+    "generators/angular",
+    "generators/javascript",
+    "generators/docker",
+    "generators/web-docker",
+    "generators/docker-ros2",
+    "generators/web-docker-ros2"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "yeoman-generator": "7.1.1",
+    "yo": "5.0.0",
+    "chalk": "^4.1.2"
+  }
+}

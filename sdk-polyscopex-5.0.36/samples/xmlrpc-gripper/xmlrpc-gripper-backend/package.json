@@ -1,0 +1,16 @@
+{
+  "name": "xmlrpc-gripper-backend",
+  "version": "0.0.0",
+  "scripts": {
+    "lint": "node -e \"console.log('Linting not supported in docker')\"",
+    "prebuild": "rimraf target",
+    "build": "npm run build-docker-image && npm run save-docker-image",
+    "build-docker-image": "docker build --platform ${ARCH:-linux/amd64} -t xmlrpc-gripper-backend:latest .",
+    "save-docker-image": "mkdir target && docker save -o target/xmlrpc-gripper-backend.tar xmlrpc-gripper-backend:latest"
+  },
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "rimraf": "^3.0.2"
+  }
+}

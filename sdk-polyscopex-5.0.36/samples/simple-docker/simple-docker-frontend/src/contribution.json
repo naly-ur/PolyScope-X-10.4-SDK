@@ -1,0 +1,11 @@
+{
+  "applicationNodes": [
+    {
+      "translationPath": "assets/i18n/",
+      "behaviorURI": "simple-docker-application-node.worker.js",
+      "presenterURI": "main.js",
+      "componentTagName": "ur-sample-simple-docker-application"
+    }
+  ],
+  "programNodes": []
+}

@@ -1,0 +1,51 @@
+{
+  "applicationNodes": [],
+  "programNodes": [
+    {
+      "excludeFromToolbox": false,
+      "translationPath": "assets/i18n/",
+      "iconURI": "assets/icons/ur.svg",
+      "behaviorURI": "assignment.worker.js",
+      "presenterURI": "main.js",
+      "componentTagName": "ur-sample-node-assignment"
+    },
+    {
+      "excludeFromToolbox": false,
+      "translationPath": "assets/i18n/",
+      "iconURI": "assets/icons/ur.svg",
+      "behaviorURI": "loop.worker.js",
+      "presenterURI": "main.js",
+      "componentTagName": "ur-sample-node-loop"
+    },
+    {
+      "excludeFromToolbox": false,
+      "translationPath": "assets/i18n/",
+      "iconURI": "assets/icons/ur.svg",
+      "behaviorURI": "set.worker.js",
+      "presenterURI": "main.js",
+      "componentTagName": "ur-sample-node-set"
+    },
+    {
+      "excludeFromToolbox": false,
+      "translationPath": "assets/i18n/",
+      "iconURI": "assets/icons/ur.svg",
+      "behaviorURI": "tool-force.worker.js",
+      "presenterURI": "main.js",
+      "componentTagName": "ur-sample-node-tool-force"
+    },
+    {
+      "translationPath": "assets/i18n/",
+      "iconURI": "assets/icons/ur.svg",
+      "behaviorURI": "move-to.worker.js",
+      "presenterURI": "main.js",
+      "componentTagName": "ur-sample-node-move-to"
+    },
+    {
+      "excludeFromToolbox": false,
+      "translationPath": "assets/i18n/",
+      "iconURI": "assets/icons/ur.svg",
+      "behaviorURI": "wait.worker.js",
+      "presenterURI": "main.js",
+      "componentTagName": "ur-sample-node-wait"
+    }
+  ]}

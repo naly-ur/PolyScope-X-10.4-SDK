@@ -1,0 +1,11 @@
+{
+  "applicationNodes": [
+    {
+      "translationPath": "assets/i18n/",
+      "behaviorURI": "simple-websocket-application-node.worker.js",
+      "presenterURI": "main.js",
+      "componentTagName": "ur-simple-websocket-application-node"
+    }
+  ],
+  "programNodes": []
+}
